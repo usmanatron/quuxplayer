@@ -1,0 +1,610 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3B637B28-3E18-45AD-9FC8-66CBB228E61F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>QuuxPlayer</RootNamespace>
+    <AssemblyName>QuuxPlayer</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ApplicationIcon>quuxplayer.ico</ApplicationIcon>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Perf|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Perf\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;PERF</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bass.Net, Version=2.4.1.3, Culture=neutral, PublicKeyToken=b7566c273e6ef480, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Release\Bass.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.SHDocVw, Version=1.1.0.0, Culture=neutral, PublicKeyToken=4b827ebe229d539f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Release\Interop.SHDocVw.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.DirectX, Version=1.0.2902.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="Microsoft.DirectX.DirectInput, Version=1.0.2902.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="Microsoft.DirectX.DirectSound, Version=1.0.2902.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="UIAutomationTypes">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AlbumDetails.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AlbumInfo.cs" />
+    <Compile Include="AssociationManager.cs" />
+    <Compile Include="AudioStream.cs" />
+    <Compile Include="AudioStreamBass.cs" />
+    <Compile Include="AudioStreamFile.cs" />
+    <Compile Include="AudioStreamNull.cs" />
+    <Compile Include="AudioStreamRadio.cs" />
+    <Compile Include="Automation\TrackListProvider.cs" />
+    <Compile Include="Automation\TrackListTrackProvider.cs" />
+    <Compile Include="FileRefresher.cs" />
+    <Compile Include="FileRemover.cs" />
+    <Compile Include="FileSoftRefresher.cs" />
+    <Compile Include="frmTaskDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GhostDetector.cs" />
+    <Compile Include="IMainView.cs" />
+    <Compile Include="iTunes.cs" />
+    <Compile Include="NormalView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Organizer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Crawler.cs" />
+    <Compile Include="StringUtil.cs" />
+    <Compile Include="frmNumberTracks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImageItem.cs" />
+    <Compile Include="Keyboard.cs" />
+    <Compile Include="PodcastEpisode.cs" />
+    <Compile Include="PodcastSubscription.cs" />
+    <Compile Include="PodcastManager.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="QCheckedDialogBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="QListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="QPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="QSelectPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="QSplitContainer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="QWatermark.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Radio.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RadioEditPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RadioGenreSelectPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RadioStation.cs" />
+    <Compile Include="ReplayGain.cs" />
+    <Compile Include="Setting.cs" />
+    <Compile Include="Style.cs" />
+    <Compile Include="TrackWriter.cs" />
+    <Compile Include="TagEditor.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="frmFileAssociations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFloatingWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmIndex.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLastFM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain_MenuSetup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMiniPlayer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGlobalInfoBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EqualizerDSP.cs" />
+    <Compile Include="EqualizerSetting.cs" />
+    <Compile Include="frmAlfred.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFileInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFindFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGamePadHelp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMonitor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOptions.Designer.cs">
+      <DependentUpon>frmOptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSleep.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSplash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSplash.Designer.cs">
+      <DependentUpon>frmSplash.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTwitter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IActionHandler.cs" />
+    <Compile Include="KeyboardHook.cs" />
+    <Compile Include="KeyboardLock.cs" />
+    <Compile Include="LastFM.cs" />
+    <Compile Include="Localization.cs" />
+    <Compile Include="LocalizationKeys.cs" />
+    <Compile Include="Lyrics.cs" />
+    <Compile Include="LyricWiki.cs" />
+    <Compile Include="Artwork.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Net.cs" />
+    <Compile Include="NetworkUtil.cs" />
+    <Compile Include="Output.cs" />
+    <Compile Include="OutputASIO.cs" />
+    <Compile Include="OutputDX.cs" />
+    <Compile Include="QAction.cs" />
+    <Compile Include="QActionType.cs" />
+    <Compile Include="QButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Clock.cs" />
+    <Compile Include="Controller.cs" />
+    <Compile Include="Controller.DataAccess.cs" />
+    <Compile Include="ControlPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Database.cs" />
+    <Compile Include="Equalizer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ImportExport.cs" />
+    <Compile Include="ExpressionTree.cs" />
+    <Compile Include="FFT.cs" />
+    <Compile Include="FileAdder.cs" />
+    <Compile Include="FilterValueList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FilterBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FilterButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="frmAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEditAutoPlaylist.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain_MenuActions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GamePad.cs" />
+    <Compile Include="KeyDefs.cs" />
+    <Compile Include="Lib.cs" />
+    <Compile Include="Player.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Progress.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmIndex.resx">
+      <DependentUpon>frmIndex.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOptions.resx">
+      <DependentUpon>frmOptions.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSplash.resx">
+      <DependentUpon>frmSplash.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MenuItemRenderer.cs">
+    </Compile>
+    <Compile Include="QCheckBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="QComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="QFixedDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QInputBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="QListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="QLock.cs" />
+    <Compile Include="QMessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QScrollBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="QSpin.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="QTextArea.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Notices.cs" />
+    <Compile Include="QTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="QToolTip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SettingType.cs" />
+    <Compile Include="SingletonApp.cs" />
+    <Compile Include="Sleep.cs" />
+    <Compile Include="SpectrumView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Styles.cs" />
+    <Compile Include="TrackDisplay.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TrackQueue.cs" />
+    <Compile Include="SpectrumData.cs" />
+    <Compile Include="Track.cs" />
+    <Compile Include="TrackList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Twitter.cs" />
+    <Compile Include="ViewState.cs" />
+    <Compile Include="TagCloud.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WinNative\VistaAudioLib.cs" />
+    <Compile Include="WinNative\WinAudioCallback.cs" />
+    <Compile Include="WinNative\WinAudioLib.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cpl_left.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cpl_pause.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cpl_volume.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cpl_volume_slider.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cpl_volume_ball.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cpl_stop_disabled.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cpl_stop_highlighted.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cpl_play_highlighted.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cpl_pause_highlighted.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cpl_fwd_disabled.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cpl_back_disabled.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cpl_back_highlighted.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cpl_fwd_highlighted.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cpl_center.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cpl_mute.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cpl_nomute_highlighted.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cpl_mute_highlighted.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\QTextBox\QTextBox.csproj">
+      <Project>{292BD523-57F5-4C53-BCF7-87D73BAE95EB}</Project>
+      <Name>QTextBox</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ReplayGain\ReplayGainAnalyzer.csproj">
+      <Project>{53D61D94-9E34-48AD-9E9A-C3D7495CE1D8}</Project>
+      <Name>ReplayGainAnalyzer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\taglibsharp\taglib-sharp.csproj">
+      <Project>{4CC18776-125E-4318-9D24-D60110AD9697}</Project>
+      <Name>taglib-sharp</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\filter_outline_background.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\filter_outline_left.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\filter_outline_right.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\filter_bar_background.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\filter_button_background.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\track_details_background.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cpl_shuffle_highlighted.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cpl_repeat_highlighted.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cpl_repeat_on.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cpl_repeat_on_highlighted.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cpl_volume_ball_highlighted.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="quuxfile.ico" />
+    <Content Include="License.txt" />
+    <Content Include="quuxplayer.ico" />
+    <None Include="Resources\mini_player_exit.bmp" />
+    <None Include="Resources\mini_player_exit_highlighted.bmp" />
+    <None Include="Resources\rss.png" />
+    <None Include="Resources\TaskDialogArrow.png" />
+    <None Include="Resources\radio_highlighted.bmp" />
+    <None Include="Resources\radio_on_highlighted.bmp" />
+    <None Include="Resources\cpl_shuffle_disabled.bmp" />
+    <None Include="Resources\cpl_repeat_disabled.bmp" />
+    <None Include="Resources\cpl_now_playing_disabled.bmp" />
+    <None Include="Resources\scroll_bar_skip_z.bmp" />
+    <None Include="Resources\scroll_bar_skip_a_highlighted.bmp" />
+    <None Include="Resources\scroll_bar_skip_a.bmp" />
+    <None Include="Resources\scroll_bar_skip_z_highlighted.bmp" />
+    <None Include="Resources\scroll_bar_up.bmp" />
+    <None Include="Resources\scroll_bar_down.bmp" />
+    <None Include="Resources\scroll_bar_down_highlighted.bmp" />
+    <None Include="Resources\scroll_bar_up_highlighted.bmp" />
+    <None Include="Resources\mini_player_volume_down_highlighted.bmp" />
+    <None Include="Resources\mini_player_volume_up_highlighted.bmp" />
+    <None Include="Resources\mini_player_back_disabled_highlight.bmp" />
+    <None Include="Resources\mini_player_fwd_disabled.bmp" />
+    <None Include="Resources\mini_player_fwd_disabled_highlight.bmp" />
+    <None Include="Resources\mini_player_back_disabled.bmp" />
+    <None Include="Resources\mini_player_pause.bmp" />
+    <None Include="Resources\mini_player_mute_on.bmp" />
+    <None Include="Resources\mini_player_mute_on_highlighted.bmp" />
+    <None Include="Resources\mini_player_mute_off_highlighted.bmp" />
+    <None Include="Resources\mini_player_play_highlighted.bmp" />
+    <None Include="Resources\mini_player_pause_highlighted.bmp" />
+    <None Include="Resources\mini_player_fwd_highlighted.bmp" />
+    <None Include="Resources\mini_player_back_highlighted.bmp" />
+    <None Include="Resources\mini_player_advance_hover.bmp" />
+    <None Include="Resources\mini_player.bmp" />
+    <None Include="Resources\gamepad.png" />
+    <None Include="Resources\help_screen_graphic.png" />
+    <None Include="Resources\button_outline_right.bmp" />
+    <None Include="Resources\filter_index_close.bmp" />
+    <None Include="Resources\filter_index_close_hover.bmp" />
+    <None Include="Resources\filter_bar_x_highlighted.bmp" />
+    <None Include="Resources\cpl_now_playing_on.bmp" />
+    <None Include="Resources\cpl_now_playing_on_highlighted.bmp" />
+    <None Include="Resources\cpl_now_playing.bmp" />
+    <None Include="Resources\cpl_now_playing_highlighted.bmp" />
+    <None Include="Resources\nag.png" />
+    <None Include="Resources\cpl_advance_highlighted.bmp" />
+    <None Include="Resources\radio_on.png" />
+    <None Include="Resources\radio_off.png" />
+    <None Include="Resources\radio_disabled.png" />
+    <None Include="Resources\radio_on.bmp" />
+    <None Include="Resources\radio_off.bmp" />
+    <None Include="Resources\radio_disabled.bmp" />
+    <None Include="Resources\checkbox_on_disabled.bmp" />
+    <None Include="Resources\checkbox_on.bmp" />
+    <None Include="Resources\checkbox_off_disabled.bmp" />
+    <None Include="Resources\checkbox_off.bmp" />
+    <None Include="Resources\gamepad.bmp" />
+    <None Include="Resources\alfred_e_neuman.jpg" />
+    <None Include="Resources\stars.bmp" />
+    <None Include="Resources\filter_bar_x.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="ITDETECTORLib">
+      <Guid>{D6995525-B33A-4980-A106-9DF58570CC66}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="iTunesLib">
+      <Guid>{9E93C96F-CF0D-43F6-8BA8-B807A3370712}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>11</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
